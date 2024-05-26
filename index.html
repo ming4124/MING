@@ -6,11 +6,16 @@
 		<title></title>
 		<style>
             .bg {
-                background-color:azure;
-				width: 500px;
-				height: 100%;
-                position: absolute;
-                top: 0;
+				background-color:azure;
+    			width: 100%;
+    			height: 100vh;
+    			display: flex;
+    			justify-content: center;
+    			align-items: center;
+            }
+            #loading {
+				font-size: 24px;
+    			font-weight: bold;
             }
 		</style>
 		<!-- Meta Pixel Code -->
@@ -32,12 +37,23 @@
 	<!-- End Meta Pixel Code -->
 	</head>
 	<body>
-		<div class="bg"></div>
+		<div class="bg">
+			<div id="loading">Loading</div>
+		</div>
 		<script type="text/javascript">
-            setTimeout(doAction, 500);
+            setTimeout(doAction, 10);
             function doAction() {
                 window.location.href = 'https://play.google.com/store/apps/details?id=water.five.sorting.puzzle&referrer=utm_source%3Dapps.facebook.com';
             }
+
+  			setInterval(updateLoadingText, 500);
+
+			let dots = 0;
+			const loadingText = document.getElementById('loading')
+			function updateLoadingText() {
+    			dots = (dots + 1) % 4;
+    			loadingText.innerText  = "Loading" + Array(dots + 1).join(".");
+  			}
         </script>
 	</body>
 </html>
